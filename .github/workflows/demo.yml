@@ -38,12 +38,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: setup ssh key
+      - name: Setup SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDRmGQKfnfZ0n7eC0URmuUgTPg79/9s5J1nutLpsU+iQUa7mB98Tx8oNWivIKDFUCZtBT4/dNZfpSh1lLkR0Z9FufP9L79aVwLX9+GuoQRPleUSuEObcPPBBiSTO9smD8sK5yEy3kiyIfc9eeK8MtTPhNl8X1sMvjPAkiN1okQcNYRNppK5KL4ylsbty/VLRq/jaKxyUVySWo9HjxUiQNU2MC+hI0DqfPG3yfV76llQPnbtCLD98GZBUDqL/iX8SYI0JBB0/gjlWh+5sc9qp/iXvj3F2futyLOSc1m7ZDiP54i0VgdzcnJUYV1JIGmLGw6w2Fl8GYxn3eKh0nPzxy02bVLW8pklSwKWpHCf7WCI9VD5kzTgO98zV98Q1G6YklPzcoVySb4FlxFI9gmu7cypRYe7wyLopRIE0mf9nP7vgiOEmM85eFdARcx7HNfbU1S+SbB4O3R6udsNpGTpQ2ZWh3BvIbJqeR5DprUeZBFfGcatBJuwzzcp/4IN9UoiYPXBSuHPbPw2sIry6cN4lumKOKddW481LbgkPMGg2V5yvmQwmOar1NaYBQaOpp2LctgkSI1KSxM8W8k3G9W2+UM1Vmi9jYvYbyGfHEt7NlBulEtDjN94VsP62FEUGEJjcX7FThVjk5OK2Lhk85H/JqtqcNRBKcVRrNRQz1ekdEZx1w== github-action" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H 45.32.184.212 >> ~/.ssh/known_hosts
+      
+      - name: Deploy via SSH
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 
 
       
       
