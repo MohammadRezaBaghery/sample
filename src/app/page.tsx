@@ -95,7 +95,7 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Go to tabibaan.ir →
+          Go to tabibaan.irr →
         </a>
       </footer>
     </div>
