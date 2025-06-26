@@ -42,9 +42,7 @@ jobs:
       
       - name: connect SSH
         run: |
-         sshpass -p "w.9F6GM7Mege-{hC" ssh -o StrictHostKeyChecking=no root@45.32.184.212 
-      - name: deploy
-        run: |
+         sshpass -p "w.9F6GM7Mege-{hC" ssh -o StrictHostKeyChecking=no root@45.32.184.212 << 'EOF'
          rm -rf sample
          git clone https://github.com/MohammadRezaBaghery/sample.git
          cd sample
@@ -52,6 +50,8 @@ jobs:
          docker stop my-app || true
          docker rm my-app || true
          docker run -d --name my-app -p 80:3000 my-app
+         EOF
+         
 
 
       
