@@ -45,7 +45,7 @@ jobs:
          sshpass -p "w.9F6GM7Mege-{hC" ssh -o StrictHostKeyChecking=no root@45.32.184.212 
       - name: deploy
         run: |
-        rm -rf sample
+         rm -rf sample
          git clone https://github.com/MohammadRezaBaghery/sample.git
          docker build -t my-app .
          docker stop my-app || true
