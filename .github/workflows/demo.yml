@@ -46,7 +46,7 @@ jobs:
           ssh-keyscan -H 45.32.184.212 >> ~/.ssh/known_hosts
       
       - name: Deploy via SSH
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 
+        run: ssh root@45.32.184.212
 
       
       
